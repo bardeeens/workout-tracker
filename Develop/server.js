@@ -18,8 +18,8 @@ app.use(express.static("public"));
 mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/populate", { useNewUrlParser: true });
 
 
-require("./routes/apiroutes")
-require("./routes/htmlroutes")
+require("./routes/apiroutes")(app)
+require("./routes/htmlroutes")(app)
 
 
 app.listen(PORT, () => {
