@@ -3,18 +3,21 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const WorkoutSchema = new Schema({
-  name: {
-    type: String,
-    unique: true
-  },
   date: {
     type: Date,
     default: Date.now
   },
   exercises: [
     {
-      type: Schema.Types.ObjectId,
-      ref: "Workout"
+      // type: Schema.Types.ObjectId,
+      // ref: "Exercise"
+      name: String,
+      type: String,
+      weight: Number,
+      sets: Number,
+      reps: Number,
+      duration: Number,
+      distance: Number
     }
   ]
 });
