@@ -17,13 +17,10 @@ app.use(express.static("public"));
 
 mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/populate", { useNewUrlParser: true });
 
-// db.Library.create({ name: "Campus Library" })
-//   .then(dbLibrary => {
-//     console.log(dbLibrary);
-//   })
-//   .catch(({message}) => {
-//     console.log(message);
-//   });
+
+require("./routes/apiroutes")
+require("./routes/htmlroutes")
+
 
 app.listen(PORT, () => {
     console.log(`App running on port ${PORT}!`);
