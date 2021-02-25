@@ -41,14 +41,29 @@ db.Workout.updateOne({ _id:  id }, { $push: { exercises: req.body } }, { new: tr
   });
 // get workouts within range
   app.get("/api/workouts/range", function(req, res) {
-    db.Workout.find({}).sort({day:-1}).limit(7)
-    .then(function(results){
-      res.json(results);
-    })
-    .catch(function(err) {
-      res.json(err)
-    })
-  });
+      db.Workout.find({}).sort({day:-1}).limit(7)
+      .then(function(results){
+        res.json(results);
+      })
+      .catch(function(err) {
+        res.json(err)
+      })
+    });
+}
 
 
-};
+
+   // db.Workout.aggregate(
+    //   [
+    //     {
+    //       $addfields: {
+    //         totalDuration: { $sum: "$exercises.duration" }
+    //       }
+    //     }
+    //   ]).sort({ day: -1 }).limit(7)
+    //   .then(dbWorkout => {
+    //     res.json(dbWorkout);
+    //   })
+    //   .catch(err => {
+    //     res.json(err)
+    //   })
